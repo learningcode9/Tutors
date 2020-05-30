@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/arts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    {% for tutors in tutor %}
+    <div class="first">
+        
+        <div class="row">
+            <div class="col-9">
+                
+        <h5>{{tutors.name}}</h5>
+        <h6>{{tutors.Tagline}}</h6>
+        <p>{{tutors.description}} <a href="#">Learn more</a></p>
+            </div>
+            <div class="col-3">
+                <a href="{{ tutors.get_absolute_url }}">
+                <img class="img-thumbnail img-responsive" style="width:150px;height:150px;" src="{{tutors.images.url}}"/>
+                <p style="margin-left: 40px;"><a href="#">$20/hour</a></p>
+                </a>
+            </div>
+            
+        </div>
+       
+      </div>
+
+      {% endfor %}
+    </div>
+
+    
+</div>
+ 
+
+{% endblock content %}

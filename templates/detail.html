@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }} {% else %} tutors {% endif %}
+{% endblock %}
+{% block content %}
+<div class="row">
+<div class="container">
+    <div class="sidenav">
+       <div class="header">
+           <p>$20/hr</p>
+           <hr>
+       </div>
+       <div class="items">
+           <ul>
+           <li><p>No subscriptions or upfront payments</p></li>
+           <li><p>Only pay for the time you need</p></li>
+           <li><p>your first hour is free</p></li>
+           </ul>
+           <div class="checkout">
+           <!--<button type="button">Checkout</button> -->
+          <a href="{% url "onlinetutors:checkout" %}"><button type="button">Checkout</button></a>
+          
+           
+           </div>
+       </div>
+    </div>
+    <div class="head">
+        <img class="rounded-circle img-responsive"  src="../static/images/baby_1.jpg"/>
+    <div class="taglines">
+        <h4>Liya Anne</h4>
+        <h3>Soprano Vocalist with a Bachelor in Professional Music</h3>
+    </div>
+    
+    <div class="qualification">
+        <h4>Qualifications for “Voice (Music)”</h4>
+            
+            <p>I graduated summa cum laude with a Bachelor in Professional Music from Berklee College Of Music. 
+                I have studied classical theory and counterpoint I’m both Berklee College Of Music and University of Massachusetts Boston.
+                At UMass I received a classical background in voice and music theory and at Berklee a contemporary and classical background in multiple fields, 
+                such as performance, music theory, counterpoint, songwriting, music business, and more. I have always excelled in my music theory, counterpoint, 
+                sight singing and reading classes and would love to help you get better as well!
+            </p>
+        <hr>
+            <p>Related Subjects&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liya has also tutored Voice (Music), Songwriting and 3 more subjects.</p>
+        
+    </div>
+</div>
+<div class="aboutme">
+    <div class="name">
+        <h4>About Me</h4>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <p>Bio</p>
+        </div>
+        <div class="col-9">
+            <p id="aboutme">I’m Liya! I graduated summa cum laude with a Bachelor’s degree in Professional Music from 
+                Berklee College Of Music. At Berklee I studied a mixture of Performance, 
+                Songwriting and Music Business and took many other classes, 
+                such as: Ear Training & Sight Singing, Counterpoint, Conducting, Music History, 
+                Arrangement, etc. I also took part in songwriting and multiple music business clubs 
+                and had the honor to represent the college at various industry trips in Nashville 
+                and New York City. I am...</p>
+                <a href="#more" id="show">More..</a>
+                <p id="more">I have studied music theory, sight singing/reading and voice at both 
+                    Berklee College Of Music and University of Massachusetts Boston. At UMass I 
+                    received a classical training, whereas at Berklee I received a contemporary 
+                    music education in those fields. Throughout my college years I have always excelled 
+                    in my music theory courses and have been asked to help my peers by tutoring them in 
+                    subjects such as music theory, solfege, counterpoint and have also offered voice 
+                    lessons and beginning keyboard skills. I used to hold weekly meetings with my peers 
+                    where I would help them with anything they didn't understand that was taught the
+                     previous week. Music is a different language so a good tutor is very important!
+                    The way I approach tutoring is seeing where the students' level is and breaking 
+                    down the information, so they can understand it and going through that information 
+                    as much as they need. I have a lot of theory, solfege, voice lesson and beginning piano 
+                    books that are very helpful as well. Throughout my own studies I have found multiple ways 
+                    to make music theory concepts more memorable and I love sharing those with students. 
+                    I have tutored mainly peers and adults but also love teaching children. I believe that 
+                    learning music is a wonderful thing, so I want to help you learn the theory behind your 
+                    favorite song, and help you find your voice while encouraging a fun learning environment.
+
+                    I am easy to reach, so do not hesita<a href="#more" id="hide">Read less</a></p>
+
+                
+                
+                
+        </div>
+    </div>
+
+<hr>
+<div class="row">
+
+    <div class="col-3 education">
+        <p>Education</p>
+    </div>
+    <div class="col-9">
+        <p>Berklee College of Music</p>
+        <p>Professional Music</p>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3 policies">
+        policies
+    </div>
+    <div class="col-9">
+        <p>Hourly Rate: $40</p>
+        <p>Lesson cancellation: <strong>24 hours notice required</strong></p>
+        <p>Your first lesson is backed by our Good Fit Guarantee</p>
+    </div>
+
+</div>
+<hr>
+<div class="row">
+    <div class="col-3 policies">
+        Schedule
+    </div>
+    <div class="col-2">
+        
+        <p>MON</p>
+        <p>TUE</p>
+        <p>WED</p>
+        <p>THU</p>
+        <p>FRI</p>
+        <p>SAT</p>
+        <p>SUN</p>
+
+    </div>
+    <div class="col-4">
+        <p>5:00 am - 8:00 pm</p>
+        <p>5:00 am - 8:00 pm</p>
+        <p>5:00 am - 8:00 pm</p>
+        <p>5:00 am - 8:00 pm</p>
+        <p>5:00 am - 8:00 pm</p>
+        <p>5:00 am - 8:00 pm</p>
+        <p>5:00 am - 8:00 pm</p>
+       
+    </div>
+
+</div>
+<hr>
+<div class="row">
+    <div class="col-3 policies">
+        Subjects
+    </div>
+    <div class="col-3">
+        <p><strong>Home School</strong></p>
+        <p>Piano</p>
+        <p><strong>Language</strong></p>
+        <p>English</p>
+    </div>
+    <div class="col-4">
+        <p><strong>Most Popular</strong></p>
+        <p>Piano</p>
+        <p><strong>Music</strong></p>
+        <p>Ear Training, Piano, Sight Singing, Songwriting, Voice (Music),</p>
+        <p><strong>Summer</strong></p>
+        <p>Piano</p>
+
+    </div>
+
+</div>
+<h5><strong>Ratings and Reviews</strong></h5>
+<hr>
+<div class="row">
+    <div class="col-3 ratings">
+        <p>Rating</p>
+    </div>
+    <div class="col-9">
+        <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+        <div class="ratingsbar">
+            <div class="flex">
+                <b class="text-nowrap">5 star</b>
+                <div class="rating-bar-container">
+                    <span class="rating-bar" style="width:100.0%"></span>
+                </div>
+            </div>
+            <div class="flex">
+                <b class="text-nowrap">4 star</b>
+                <div class="rating-bar-container">
+                    <span class="rating-bar" style="width:100.0%"></span>
+                </div>
+            </div>
+            <div class="flex">
+                <b class="text-nowrap">3 star</b>
+                <div class="rating-bar-container">
+                    <span class="rating-bar" style="width:100.0%"></span>
+                </div>
+            </div>
+            <div class="flex">
+                <b class="text-nowrap">2 star</b>
+                <div class="rating-bar-container">
+                    <span class="rating-bar" style="width:100.0%"></span>
+                </div>
+            </div>
+            <div class="flex">
+                <b class="text-nowrap">1 star</b>
+                <div class="rating-bar-container">
+                    <span class="rating-bar" style="width:100.0%"></span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <p>Reviews</p>
+    </div>
+    <div class="col-3">
+        <form action="" id="usrform" >
+            <input style="margin-bottom:20px;" type="text" name="usrname" placeholder="enter username" required /> 
+        <br>
+          <textarea rows="4" cols="50" name="comment" form="usrform" required>plz add your comments here... </textarea>   
+          <input type="submit">
+        </form>
+    </div>
+
+</div>
+
+</div>  
+</div>
+</div>
+<script>
+  $(document).ready(function(){
+ 
+    $("#more").hide();
+    
+  });
+  $("#show").click(function(){
+      $('#show').hide();
+    $("#more").show();
+  });
+  $("#hide").click(function(){
+    $("#more").hide();
+    $('#show').show();
+    
+  });
+
+</script>
+
+{% endblock %}
+
+

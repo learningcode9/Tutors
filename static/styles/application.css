@@ -1,0 +1,60 @@
+.heading{
+    background-image:url(../images/backgroundimage.jpg); /* The image used */
+    opacity: 0.7;
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 150px; /* You must set a specified height */
+    /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    width:100%;
+    margin:0px;
+}
+.heading h4{
+    margin-top:100px;
+    margin-left:500px;
+    color:white;
+
+}
+.container{
+    background-color: #F5F5F5;
+    height:100%;
+    width:800px;
+    padding:20px;
+}
+.form-control{
+    width:350px;
+}
+#street1{
+    width:600px;
+}
+#street2{
+    width:600px;
+}
+#location{
+    width:250px;
+}
+#city{
+    width:250px;
+}
+#zip{
+    width:200px;
+}
+#bobmonth{
+    width:200px;
+}
+#dobday{
+    width:200px;
+}
+#dobyear{
+    width:200px;
+}
+#gridRadios1{
+    margin-left:40px;
+}
+#degree1{
+    margin-left:5px;
+}
+#degree{
+    margin-left: 65px;
+}
+

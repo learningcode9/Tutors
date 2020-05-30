@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/tutorprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    
+    <div class="row head">
+        <h4>BECOME AN INSTRUCTOR</h4>
+    
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h5>If you're a certified instructor and you are interested in teaching on the Arts in CT platform, follow the sign-up process on this page!</h5>
+            <ul>
+                <li>Be Your Own Boss</li>
+                <li>Work from Your Home, or While Traveling/Touring</li>
+                <li> Earn Extra Cash</li>
+                <li>No Cost to Join</li>
+                <li>Work as much as you would like to Earn</li>
+                <li>Teach Master Classes via LMT Platform</li>
+                <li>Secure Environment</li>
+                <li>All Skill Levels</li>
+                
+            </ul>
+        </div>
+        <div class="col-4 benefits">
+            <h5 style="margin-left: 30px;">Benefits</h5>
+            <ul>
+                <li>1-1 Private Lessons</li>
+                <li>Group Lessons</li>
+                <li>In Schools, After Schools programs and many others</li>
+                <li>All Ages and Skill Levels</li>
+                <li>Any Instrument Including Voice</li>
+                <li>Teach a Full Curriculum or even just a song or two</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row questions">
+        <div class="col-10">
+        <h6>If you have any questions please feel free to contact us at lrarningcode9@livemusictutor.com. All instructors must be at least 18 years old.</h6>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-8 instructions">
+            <h5>INSTRUCTOR SIGN-UP PROCESS</h5>
+            <ul>
+                <li>Create an Instructor account.</li>
+                <li>Review and accept the terms of the Instructor Agreement and Code of Conduct.</li>
+                <li>Complete and submit the required W-9 form .</li>
+                <li>Complete and pass the background check and screening.</li>
+            </ul>
+            <a href="{% url "onlinetutors:application" %}"><button type="button" class="btn btn-primary">SUBMIT INSTRUCTOR APPLICATION HERE </button></a>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

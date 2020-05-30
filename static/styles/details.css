@@ -1,0 +1,95 @@
+.navbar-nav .nav-link{
+    color:white !important;
+}
+.head{
+    margin-left: 10px;
+    width:80%;
+    
+}
+.container{
+    margin-top: 80px;
+}
+
+img{
+    height:120px;
+    width:120px;
+    
+}
+.taglines{
+    display: inline-block;
+    padding:20px;
+}
+.qualification{
+    margin-top: 20px;
+    padding:25px;
+    background-color:#F5F5F5;
+
+}
+.qualification hr{
+    width:100%;
+    border: 1px solid gray;
+}
+.sidenav{
+    height:310px;
+    width:240px;
+    background-color:#F5F5F5;;
+    float:right;
+    margin-right:-50px;
+    position: relative;
+   
+}
+.header{
+    font-weight: bold;
+    text-align: center;
+    padding:5px;
+}
+.checkout button{
+    margin-left:70px;
+    background-color: #ffaa80;
+    color:black;
+}
+.aboutme{
+    width:80%;
+    
+    margin-top: 20px;
+    margin-left: 10px;
+    padding:20px;
+}
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+  }
+  
+  .fa {
+    font-size: 25px;
+  }
+  
+  .checked {
+    color: orange;
+  }
+  
+  
+ 
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  
+  /* Individual bars */
+  .rating-bar-container{width: 60%; height: 18px; background-color:gray;}
+ 
+  
+  /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+  @media (max-width: 400px) {
+    .side, .middle {
+      width: 100%;
+    }
+    .right {
+      display: none;
+    }
+  }

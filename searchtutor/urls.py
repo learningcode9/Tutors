@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path("",include('onlinetutors.urls')),
     
+    
     path('admin/', admin.site.urls),
     
 ]

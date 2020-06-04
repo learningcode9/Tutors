@@ -46,7 +46,7 @@ class tutors(models.Model):
 # Create your views here. 
 class Application(models.Model):
     STATE_CHOICES =( 
-    ("1","Alabama"),("2","Alaska"),("3","Arizona"),("4","Arkansas"),("5","California"),("6","Colorado"),
+    ('', 'Choose...'),("1","Alabama"),("2","Alaska"),("3","Arizona"),("4","Arkansas"),("5","California"),("6","Colorado"),
     ("7","Connecticut"),("8","Delaware"),("9","Florida"),("10","Georgia"),("11","Hawaii"),("12","Idaho"),
     ("13","Illinois"),("14","Indiana"),("15","Iowa"),("16","Kansas"),("17","Kentucky"),("18","Louisiana"),
     ("19","Maine"),("20","Maryland"),("21","Massachusetts"),("22","Michigan"),("23","Minnesota"),("24","Mississippi"),
@@ -60,6 +60,7 @@ class Application(models.Model):
     GENDER_CHOICES=(
      ('male','Male'),
      ('female','Female'),
+     ('other','other'),
     )
     k=(
     ('yes','Yes'),
@@ -97,11 +98,10 @@ class Application(models.Model):
     firstname=models.CharField(max_length=50)
     lastname=models.CharField(max_length=50)
     Email=models.EmailField(null=False,blank=False,unique=True)
-    phonenumber=models.CharField(max_length=15,null=False, blank=False, unique=True)
+    phonenumber=models.CharField(max_length=13,null=False, blank=False, unique=True)
     password = models.CharField(max_length=32)
     confirm_password=models.CharField(max_length=32)
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
     state = models.CharField(max_length=100,choices=STATE_CHOICES)
     city = models.CharField(max_length=100)
     zipcode=models.CharField(max_length=15)
@@ -112,8 +112,9 @@ class Application(models.Model):
     classroom=models.CharField(max_length=50,choices=classroom)
     # qgenres=models.CharField(max_length=50, choices=genres1)
     # languages=models.CharField(max_length=50, choices=languages1)
-    languages = MultiSelectField(choices=languages1,null=True)
-    genres = MultiSelectField(choices=genres1,null=True)
+    languages = MultiSelectField(choices=languages1,null=True,blank=True)
+    genres = MultiSelectField(choices=genres1,null=True,blank=True)
+    resume = models.FileField(upload_to='resume/',null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

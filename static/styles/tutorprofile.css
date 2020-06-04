@@ -1,18 +1,16 @@
-.head{
-    background-image:url(../images/backgroundimage.jpg); /* The image used */
+.header{
+    background-image:url(../images/backgroundimage.jpg); 
     opacity: 0.7;
-    /* Used if the image is unavailable */
-    height: 200px; /* You must set a specified height */
-    /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; 
-    width:100%;
-    margin:0px;
-}
-.head h4{
+    height: 200px;  
+    background-repeat: no-repeat;
+    background-size: cover;  
+    width:100%; 
+    margin:0px; 
+ } 
+.header h4{
     margin-top:120px;
     margin-left:450px;
-    color:white;
+    color:white; 
 }
 .instructions button{
     margin-top:20px;
@@ -23,6 +21,6 @@
     margin-top:30px;
 }
 .container-fluid{
-    background-color: None;
+    background-color: None; 
 
-}
+} 

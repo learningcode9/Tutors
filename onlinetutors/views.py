@@ -2,22 +2,22 @@ from django.shortcuts import render,redirect, get_object_or_404
 from onlinetutors.models import Category,tutors
 from .forms import application
 from .models import Application
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 def registration(request):
+    
     if request.method == 'POST':
-        form=application(request.POST)
+        form=application(request.POST,request.FILES)
         if form.is_valid():
-           
-           
             firstname=form.cleaned_data['firstname']
             lastname=form.cleaned_data['lastname']
             Email=form.cleaned_data['Email']
             phonenumber=form.cleaned_data['phonenumber']
             password = form.cleaned_data['password']
             confirm_password=form.cleaned_data['confirm_password']
-            address1 = form.cleaned_data['address1']
-            address2 = form.cleaned_data['address2']
+            address = form.cleaned_data['address']
             state = form.cleaned_data['state']
             city =form.cleaned_data['city']
             zipcode=form.cleaned_data['zipcode']
@@ -28,13 +28,25 @@ def registration(request):
             classroom=form.cleaned_data['classroom']
             genres=form.cleaned_data['genres']
             languages=form.cleaned_data['languages']
+            resume=form.cleaned_data['resume']
             
             form=Application(firstname=firstname,lastname=lastname,Email= Email,phonenumber=phonenumber,
-            password=password,address1=address1,address2=address2, state= state,city=city,zipcode=zipcode,
-            DOB=DOB,Gender=Gender,k12=k12,degree=degree,classroom=classroom,languages=languages,genres=genres)
-           
+            password=password,address=address,state= state,city=city,zipcode=zipcode,
+            DOB=DOB,Gender=Gender,k12=k12,degree=degree,classroom=classroom,languages=languages,genres=genres,resume=resume)
+            send_mail(
+                "Thanks",
+                "Thanks for your registration,We will get back to you after reviewing your resume",
+                settings.EMAIL_HOST_USER,
+                [Email],
+                fail_silently=False,
+            )
             form.save()
+           
+
+
             return redirect("/thankyou/")
+        else:
+            print(form.errors)
     else:
         form=application()
     return render(request,"registration.html",{"form":form})

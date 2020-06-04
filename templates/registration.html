@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/registration.css' %}">
+{% endblock %}
 <!-- {% load crispy_forms_tags %} -->
 {% block content %}
 <div class="container">   
-     
-   <h1 style="text-align:center;">Application Form</h1><hr> 
-   
-   <form action="" method="POST"> 
-       
-    {% csrf_token %}
-    <!-- {{ form|crispy }}   -->
-    {{form.as_p}}
-    <input type="submit"  class="btn btn-primary" value="Submit"> 
-    
-    
-    </form>  
-    
- </div>  
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="text-align:center;">Application Form</h1><hr> 
+                <form action="" method="POST"  enctype="multipart/form-data"> 
+                    {% csrf_token %}
+                    <!-- {{ form|crispy }}   -->
+                    {{form.as_p}}
+                    <input type="submit"  class="btn btn-primary" value="Submit"> 
+                </form>  
+        </div>
+    </div>
+</div>  
 
 {% endblock %}

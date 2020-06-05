@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from onlinetutors.models import Category,tutors
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger 
 from .forms import application
 from .models import Application
 from django.core.mail import send_mail
@@ -52,29 +53,6 @@ def registration(request):
     return render(request,"registration.html",{"form":form})
 
 
-# def registration(request):
-#     if request.method == 'POST':
-#         form=application(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             firstname=form.cleaned_data['firstname']
-#             lastname=form.cleaned_data['lastname']
-#             country=form.cleaned_data['country']
-#             form= djangoForm(firstname=firstname,lastname=lastname,country=country)
-#             form.save()
-#             return redirect("/thankyou/")
-#     else:
-#         form=application()
-    # return render(request,"registration.html",{"form":form})
-
-
-
-
-
-
-
-
-
 def thankyou(request):
     return render(request,'thankyou.html')
 def home(request):
@@ -83,6 +61,14 @@ def home(request):
 def arts(request):
     categories = Category.objects.filter(name='Arts')
     tutor = tutors.objects.filter(category_id=1)
+    paginator=Paginator(categories,1)
+    page_number=request.GET.get('page')   
+    try:          
+        categories=paginator.page(page_number)   
+    except PageNotAnInteger:         
+        categories=paginator.page(1)   
+    except EmptyPage:           
+        categories=paginator.page(paginator.num_pages) 
     context = {
         
         'categories': categories,
@@ -90,6 +76,36 @@ def arts(request):
     }
   
     return render(request,'Arts.html',context)
+# def music(request):
+#     categories = Category.objects.filter(name='Music')
+#     tutor = tutors.objects.filter(category_id=2)
+#     context = {
+        
+#         'categories': categories,
+#         'tutor': tutor
+#     }
+  
+#     return render(request,'Music.html',context)
+# def arts(request):
+#     categories = Category.objects.filter(name='Theatre')
+#     tutor = tutors.objects.filter(category_id=3)
+#     context = {
+        
+#         'categories': categories,
+#         'tutor': tutor
+#     }
+  
+#     return render(request,'Theatre.html',context)
+# def arts(request):
+#     categories = Category.objects.filter(name='Dance')
+#     tutor = tutors.objects.filter(category_id=4)
+#     context = {
+        
+#         'categories': categories,
+#         'tutor': tutor
+#     }
+  
+#     return render(request,'Dance.html',context)
 def tutor_detail(request, id, slug):
     tutor = get_object_or_404(tutors, id=id, slug=slug)
     

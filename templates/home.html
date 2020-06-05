@@ -83,11 +83,19 @@
        var x=document.getElementById('tutors').value;
        if (x=='Arts'){
         document.location.href="http://127.0.0.1:8000/Arts/";
-        
        }
+       else if(x=='Music'){
+        document.location.href="http://127.0.0.1:8000/Music/";
+      }
+      else if(x=='Theatre'){
+        document.location.href="http://127.0.0.1:8000/Theatre/";
+      }
+      else if(x=='Dance'){
+        document.location.href="http://127.0.0.1:8000/Dance/";
+      }
        else{
         document.open();
-        document.write("<h1>Hello World</h1>");
+        document.write("<h1>Plz enter a valid search</h1>");
         document.close();
        }
      }

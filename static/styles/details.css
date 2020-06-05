@@ -6,8 +6,9 @@
     width:80%;
     
 }
-.container{
-    margin-top: 80px;
+.detailscontainer{
+    margin-top: 50px;
+    padding:30px;
 }
 
 img{
@@ -34,14 +35,15 @@ img{
     width:240px;
     background-color:#F5F5F5;;
     float:right;
-    margin-right:-50px;
+    margin-right:-20px;
     position: relative;
    
 }
-.header{
+.price{
     font-weight: bold;
     text-align: center;
     padding:5px;
+    margin-right:20px;
 }
 .checkout button{
     margin-left:70px;

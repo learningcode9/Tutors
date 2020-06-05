@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/details.css' %}">
+{% endblock %}
 {% block title %}
     {% if category %}{{ category.name }} {% else %} tutors {% endif %}
 {% endblock %}
 {% block content %}
-<div class="row">
-<div class="container">
+<div class="detailscontainer">
     <div class="sidenav">
-       <div class="header">
+       <div class="price">
            <p>$20/hr</p>
            <hr>
        </div>
@@ -19,15 +20,15 @@
            <li><p>your first hour is free</p></li>
            </ul>
            <div class="checkout">
-           <!--<button type="button">Checkout</button> -->
-          <a href="{% url "onlinetutors:checkout" %}"><button type="button">Checkout</button></a>
-          
-           
+           <button type="button">Checkout</button>
            </div>
        </div>
+       
+
     </div>
+   
     <div class="head">
-        <img class="rounded-circle img-responsive"  src="../static/images/baby_1.jpg"/>
+        <img class=" rounded-circle img-responsive"  src="/static/images/baby_1.jpg"/>
     <div class="taglines">
         <h4>Liya Anne</h4>
         <h3>Soprano Vocalist with a Bachelor in Professional Music</h3>
@@ -230,7 +231,7 @@
 
 </div>  
 </div>
-</div>
+
 <script>
   $(document).ready(function(){
  

@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Find a tutor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -11,12 +10,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel='stylesheet' type="text/css" href="{% static 'styles/home.css' %}"/>
+    <link rel='stylesheet' type="text/css" href="{% static 'styles/base.css' %}"/>
    
-    <!-- if Arts.html 
+    if home.html
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}"/>
+    
+    if Arts.html 
     <link rel="stylesheet" href="{% static 'styles/arts.css' %}"/>
+    
     if details.html
-    <link rel="stylesheet" href="{% static 'styles/details.css' %}"/> -->
+    <link rel="stylesheet" href="{% static 'styles/details.css' %}"/> 
+    
     if tutorprofile.html 
     <link rel="stylesheet" href="{%static 'styles/tutorprofile.css' %}"/> 
     
@@ -44,6 +48,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">About Us</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "onlinetutors:tutorprofile" %}">Become an instructor</a>
+              </li> 
           
               <!-- Dropdown -->
               <li class="nav-item dropdown">
@@ -54,7 +61,7 @@
                   <a class="dropdown-item" href="#">Music</a>
                   <a class="dropdown-item" href="#">Dance</a>
                   <a class="dropdown-item" href="#">Theatre</a>
-                  <a class="dropdown-item" href="#">Arts</a>
+                  <a class="dropdown-item" href="{% url "onlinetutors:Arts" %}">Arts</a>
                 </div>
               </li>
             </ul>

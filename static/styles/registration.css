@@ -1,11 +1,19 @@
-body{
+/* body{
     background-color: #F0F8FF;
     width:800px;
     
+} */
+.fullbody{
+    background-color:#F0F8FF;
+    height:2500px;
 }
-.container{
-    margin-left: 350px;
+
+.registrationcontainer{
+    width:60%;
+    
     margin-bottom: 80px;
+    height:auto;
+    margin-left:350px;
     
 }
 .col-md-8 h1{

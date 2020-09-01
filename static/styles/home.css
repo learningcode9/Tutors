@@ -1,29 +1,79 @@
 
-.background{
+.containerHome{
     background-image:url(../images/backgroundimage.jpg); /* The image used */
     opacity: 0.7;
     /* background-color: #cccccc; Used if the image is unavailable */
-    height: 530px; /* You must set a specified height */
+    height: 690px; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; 
+    /* background-size: cover;  */
+    background-attachment: fixed;
     width: 100%;
     
     
 }
+.navbar-brand{
+    padding-right: 65px;
+    }
+.navbar-nav .nav-link{
+    color:white !important;
+}
+
+.nav-link a:hover{
+    color:green
+}
+    
+.navbar-right{
+     margin-right:30px;
+}
 #tutors{
-    margin-left:450px;
-    margin-top: 300px;
+    
+    margin-top: 320px;
     border: 2px solid black;
-    border-radius: 4px;
-    widows: 50px;
-      
+    border-radius: 5px;
+    width: 400px;
+    height:50px;
+    
 }
-#submit{
-    color:black;
+* {
+  box-sizing: border-box;
+}
+
+/* #submit{
+    color:white;
     font-weight: bold;
+    height:45px;
+    width:120px;
+} */
+
+.submit_button{
+    color:white;
+    background-color: green;
+    font:20px;
+    width:60px;
+    height:40px;
+    margin-left:-70px;
+    border-radius: 10px;;
 }
-
-
-
-
+.second-row{
+    height:80px;
+    width:100%;
+    background-color:white;
+    margin-top:280px;
+}
+.university_list{
+   
+   list-style: none;
+  
+  
+}
+.university_list li{
+    display: inline-block;
+    padding-right:40px;
+    font-weight: bolder;
+}
+.third-row{
+    background-color:lightgray;
+    width: 100%;
+   
+}

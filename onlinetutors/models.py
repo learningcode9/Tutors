@@ -1,6 +1,9 @@
+from __future__ import unicode_literals
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.urls import reverse
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -18,27 +21,57 @@ class Category(models.Model):
 
 
 class tutors(models.Model):
+    
     category = models.ForeignKey(Category, related_name='tutors', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, db_index=True)
     Tagline = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
-    description = models.TextField(blank=True)
+    description_tutor = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     images=models.ImageField(upload_to="media")
-  
-
-    class Meta:
-        ordering = ('name', )
-        index_together = (('id', 'slug'),)
+    qualification=models.TextField(null=True)
+    related_subjects=models.CharField(max_length=250,null=True)
+    education_1=models.CharField(max_length=100,null=True)
+    education_2=models.CharField(max_length=100,null=True,blank=True)
+    education_3=models.CharField(max_length=100,null=True,blank=True)
+    education_4=models.CharField(max_length=100,null=True,blank=True)
+    Home_school=models.CharField(max_length=100,null=True,blank=True)
+    Language=models.CharField(max_length=100,null=True,blank=True)
+    Most_popular=models.CharField(max_length=100,null=True,blank=True)
+    Music=models.CharField(max_length=100,null=True,blank=True)
+    summar=models.CharField(max_length=100,null=True,blank=True)
+    # # enter_monday = models.CharField(null=True,blank=True,defalut="Monday" max_length=50)
+    enter_mondaytimings= models.CharField(default="NotAvailable",max_length=50,editable=True)
+    # # enter_tuesday = models.CharField(null=True,blank=True,default="Tuesday" max_length=50)
+    enter_tuesdaytimings= models.CharField(default="NotAvailable",max_length=50,editable=True)
+    # # enter_wednesday = models.CharField(null=True,blank=True,max_length=50)
+    enter_wednesdaytimings= models.CharField(default="NotAvailable",max_length=50,editable=True)
+    # # enter_thursday = models.CharField(null=True,blank=True,max_length=50)
+    enter_thursdaytimings= models.CharField(default="NotAvailable",max_length=50,editable=True)
+    # # enter_friday = models.CharField(null=True,blank=True,max_length=50)
+    enter_fridaytimings= models.CharField(default="Not Available",max_length=50,editable=True)
+    # # enter_saturday = models.CharField(null=True,blank=True,max_length=50)
+    enter_saturdaytimings= models.CharField(default="Not Available",max_length=50,editable=True)
+    # # enter_sunday = models.CharField(null=True,blank=True,max_length=50)
+    enter_sundaytimings= models.CharField(default="Not Available",max_length=50,editable=True)
+    
    
-
+    
+    class Meta:
+       ordering = ('name', )
+       index_together = (('id', 'slug'),) 
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
         return reverse('onlinetutors:tutor_detail', args=[self.id, self.slug])
+  
+
+   
+
+   
 
 
 
@@ -118,9 +151,26 @@ class Application(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
-
-
     def __str__(self):
         return self.firstname
 
+class Comment(models.Model):
+    post=models.ForeignKey(tutors,related_name='comments',on_delete=models.CASCADE)
+    name=models.CharField(max_length=32) 
+    email=models.EmailField()  
+    body=models.TextField() 
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now=True) 
+    active=models.BooleanField(default=True) 
+    class Meta:   
+        ordering=('created',) 
+    def __str__(self): 
+        return 'Commented By {} on {}'.format(self.name,self.post) 
 
+
+class ratings(models.Model):
+    username=models.ForeignKey(User,on_delete=models.CASCADE)
+    rating=models.FloatField()
+    tutorname=models.ForeignKey(tutors,related_name='ratings',on_delete=models.CASCADE)
+    created_date=models.DateTimeField(auto_created=True)
+    updated=models.DateTimeField(auto_created=True)

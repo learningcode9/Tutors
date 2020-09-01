@@ -1,97 +1,183 @@
-{% extends "base.html" %}
+
 {% load static %}
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
-{% endblock %}
-
-{% block content %}
-
-
-
-
-<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find a tutor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel='stylesheet' type="text/css" href="{% static 'styles/home.css' %}"/>
-    <title>Find a tutor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+    if Arts.html 
+    <link rel="stylesheet" href="{% static 'styles/arts.css' %}"/>
+    
+    if detail.html
+    <link rel="stylesheet" href="{% static 'styles/details.css' %}"/> 
+    
+    if tutorprofile.html 
+    <link rel="stylesheet" href="{%static 'styles/tutorprofile.css' %}"/> 
+    
+    if registration.html 
+    <link rel="stylesheet" href="{%static 'styles/registration.css' %}"/>
+    
+    if signup.html 
+    <link rel="stylesheet" href="{%static 'styles/signup.css' %}"/>
+
+    if login.html 
+    <link rel="stylesheet" href="{%static 'styles/login.css' %}"/>
+
+    if resetpassword.html 
+    <link rel="stylesheet" href="{%static 'styles/resetpassword.css' %}" />
+
+    if thankyou.html
+    <link rel="stylesheet" href="{%static 'styles/thankyou.css' %}" />
 </head>
+<html>
 <body>
+<div class='container-fluid'>
+      
     
-    <div class='container-fluid'>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            Brand -->
-            <!-- <a class="navbar-brand" href="#">Tutors</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="collapsibleNavbar"> -->
-            <!-- Links -->
-            <!-- <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-              </li>
-          
-              <li class="nav-item">
-                <a class="nav-link" href="{% url "onlinetutors:tutorprofile" %}">Become an instructor</a>
-              </li> -->
-              <!-- Dropdown -->
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  Find a tutor
-                </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Music</a>
-                  <a class="dropdown-item" href="#">Dance</a>
-                  <a class="dropdown-item" href="#">Theatre</a>
-                  <a class="dropdown-item" href="{% url "onlinetutors:Arts" %}">Arts</a>
-                </div>
-              </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
-            </ul>
-              </div>
-          </nav>
-    </div> -->
-    <div class="background">
-     
-        <label for="searchtutors"></label>
-        <input type="search" id="tutors" name="tutors" placeholder="Search tutors">
-        <input type="submit" id="submit"  onClick="tutors()" value="Submit">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Tutors</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "onlinetutors:tutorprofile" %}">Become an instructor</a>
+        </li> 
     
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Find a tutor
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Music</a>
+            <a class="dropdown-item" href="#">Dance</a>
+            <a class="dropdown-item" href="#">Theatre</a>
+            <a class="dropdown-item" href="{% url "onlinetutors:Arts" %}">Arts</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item" style="color:white;margin-top:8px;">Hello {{user.username}}</li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url "account:logout" %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url "account:login" %}">Login</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url "account:signup" %}">SignUp</a>
+          </li>
+         
+      </ul>
+        </div>
+    </nav>
+</div>
+<div class="containerHome">
+<div class="background text-center">
+    <label for="searchtutors"></label>
+    <div class="mainsearch">
+      <input type="search" id="tutors" class="text-center" name="tutors" placeholder="Search tutors">
+      <!-- <input type="submit" id="submit" class="btn btn-success" onClick="tutors()" value="Submit"><i class="fa fa-search"></i> -->
+      <button type="submit" onClick="tutors()" class="submit_button"><i class="fa fa-search"></i></button>
     </div>
-    <p id="demo"></p>
-   <script>
+</div>
+
+<div class="second-row">
+  <h6 class="text-center" style="color: green;font-family:Verdana, Geneva, Tahoma, sans-serif;padding-top:15px;font-weight:1">FIND YOUR TEACHERS FROM</h6>
+  <ul class="university_list text-center">
+    <li>University of California</li>
+    <li>Queen's University</li>
+    <li>Yale</li>
+    <li>Princeton University</li>
+    <hr>
+  </ul>
+
+</div>
+
+<div class="third-row">
+    <h5 class="text-center" style="padding-top:40px;color:black;font:bold;font-family:'Times New Roman', Times, serif;">HOW  TEACHER4TUTOR  WORKS?</h5>
+    <div class="row" style="margin-top:30px;">
+      
+        <div class="col-4">
+          <div class="card" style="width:250px;margin-left:500px;">
+            <div class="card-title" style="padding:20px;font-weight:bold;">
+              1.Select your exam
+            </div>
+            <div class="card-text" style="padding-left:20px;padding-bottom:20px;">
+              Tell us what you need help with and our
+              smart matching system will connect you
+              with an online tutor.
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card" style="width:250px;margin-left:150px;">
+            <div class="card-title" style="padding:20px;font-weight:bold;">
+              2.Select your date
+            </div>
+            <div class="card-text" style="padding-left:20px;padding-bottom:20px;">
+              Select when is your exam date then our
+              smart matching system will connect you
+              with an online tutor.
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card" style="width:250px;margin-left:-200px;">
+            <div class="card-title" style="padding:20px;font-weight:bold;">
+              3.Select your teacher
+            </div>
+            <div class="card-text" style="padding-left:20px;padding-bottom:20px;">
+              Get live 1-on-1 help in our advanced
+              lesson space. Use a virtual whiteboard,
+              audio/video chat, screen sharing, text
+              editor and much more.
+          </div>
+          </div>
+        </div>
+    </div>
+      
+    
+  </div>
+
+<p id="demo"></p>
+<script>
+
      function tutors(){
        var x=document.getElementById('tutors').value;
        if (x=='Arts'){
-        document.location.href="http://127.0.0.1:8000/Arts/";
+        /*document.location.href="http://127.0.0.1:8000/Arts/"; */
+        window.location.href = '/Arts';
        }
        else if(x=='Music'){
-        document.location.href="http://127.0.0.1:8000/Music/";
+        document.location.href="/Music";
       }
       else if(x=='Theatre'){
-        document.location.href="http://127.0.0.1:8000/Theatre/";
+        document.location.href="/Theatre";
       }
       else if(x=='Dance'){
-        document.location.href="http://127.0.0.1:8000/Dance/";
+        document.location.href="/Dance";
       }
        else{
         document.open();
@@ -99,10 +185,13 @@
         document.close();
        }
      }
-   </script>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+</script>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
 
 </body>
-{%endblock%}
+</html>
+    

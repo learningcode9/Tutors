@@ -7,20 +7,23 @@
     background-color:#F0F8FF;
     height:2500px;
 }
-
+form{
+    align-content: center;
+}
 .registrationcontainer{
     width:60%;
     
     margin-bottom: 80px;
     height:auto;
-    margin-left:350px;
+    margin-left:450px;
     
 }
-.col-md-8 h1{
+.col-md-8 h2{
     margin-top: 100px;
+    margin-bottom: 20px;
 }
 .btn-primary{
-    width:300px;
+    width:400px;
 }
 .errorlist{
     border:2px solid red;

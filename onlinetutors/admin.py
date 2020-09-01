@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,tutors
+from .models import Category,tutors,Comment,ratings
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
@@ -13,11 +13,19 @@ class TutorAdmin(admin.ModelAdmin):
     search_fields=('name','Tagline',)
     list_editable = ['price',]
     prepopulated_fields = {'slug': ('name',)}
+    
 
 admin.site.register(tutors, TutorAdmin)
 
-# class ApplicationAdmin(admin.ModelAdmin):
-#     list_display=['firstname','lastname','degree','created_at','updated_at']
-#     search_fields=('name','genres')
-   
-# admin.site.register(Application,ApplicationAdmin)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display=('name','post','body','created','updated','active') 
+    list_filter=('active','created','updated')  
+    search_fields=('name','body')  
+admin.site.register(Comment,CommentAdmin) 
+
+class ratingAdmin(admin.ModelAdmin):
+    list_display=['username','rating','tutorname']
+
+admin.site.register(ratings,ratingAdmin)
+

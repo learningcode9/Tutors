@@ -6,28 +6,56 @@
 
 {% block content %}
 
+<h2 class="text-center" style="margin-top: 70px;color:darkcyan;">Find your Arts tutors here..</h2>
+
 <div class="Artscontainer">
-    <h2 class="text-center" style="margin-top: 70px;color:darkcyan;">Find your Arts tutors here..</h2>
-    {% for tutors in tutor %}
-    <div class="tutordetails">
-        <div class="row">
-           <div class="col-9">
-                <h5>{{tutors.name}}</h5>
-                <h6>{{tutors.Tagline}}</h6>
-                <p>{{tutors.description|truncatewords:50|linebreaks}} <a href="#">Learn more</a></p>
+    <div class="row">
+    
+    {% for arts in tutor %}
+    <!-- <div class="tutordetails"> -->
+        
+        
+        <div class="col-sm-3 col-md-3 col-lg-3 mt-md-2"> 
+        <div class="card">
+            <div class="container2">
+                <div class="row">
+                    <div class="col-8">
+            <a href="{{ arts.get_absolute_url }}">
+                <img src={{arts.images.url}} style="background-color:azure;width:150px;height:150px;" alt="lehangas" class="rounded-circle img-responsive">
+                <!-- <img class="rounded-circle img-responsive" style="width:150px;height:150px;" src="{{arts.images.url}}"/> -->
+                 </a>
+                </div>
+        
+                <div class="col-4 price">
+                    
+                <p><a href="#">${{arts.price}}/hr</a></p>
+                </div>
+        
             </div>
-            <div class="col-3">
-                <a href="{{ tutors.get_absolute_url }}">
-                <img class="img-thumbnail img-responsive" style="width:150px;height:150px;" src="{{tutors.images.url}}"/>
-                <p style="margin-left: 40px;"><a href="#">$20/hour</a></p>
-                </a>
             </div>
             
+            <div class="card-body">
+                <h5 class="card-title">{{arts.name}}</h5>
+                <h6 class="card-text">{{arts.Tagline}}</h6>
+                <p class="card-text">{{arts.description_tutor|truncatewords:15|linebreaks}} <a href="{{ arts.get_absolute_url }}">Learn more</a></p>
+            </div>
         </div>
-       
-    </div>
+        </div>
+          
+   
+   
+    
 {% endfor %}
 </div>
+</div>
+
+
 <!-- {% include 'pagination.html' with page=Arts%}  -->
 
 {% endblock content %}
+
+
+
+      
+           
+   

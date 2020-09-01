@@ -1,0 +1,20 @@
+.logincontainer{
+    height: 450px;
+    width:400px; 
+    margin-left: 530px; 
+    padding:30px; 
+    /* margin-top: 150px;  */
+    border:1px solid black;
+    background-color: white;
+    
+} 
+.loginbody{
+    /* margin-top: -30px; */
+    /* background-color:#F0F8FF; */
+    /* height: 630px; */
+   
+}
+body{
+    background-color:#F0F8FF;
+}
+ 

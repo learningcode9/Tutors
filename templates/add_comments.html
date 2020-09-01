@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title%} Comment on tutor {% endblock %}
+
+{% block content %}
+
+
+    <h1 style="margin-top:50px;margin-left:300px;">Add Post..</h1>
+    <br/><br/>
+    <div class="form-group" style="width:400px;margin-left:300px;">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-primary">Post</button>
+        
+        </form>
+    </div>
+
+
+{% endblock %}

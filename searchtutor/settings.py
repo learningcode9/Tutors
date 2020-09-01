@@ -39,10 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'onlinetutors',
+    'account',
     'crispy_forms',
+    'bootstrap_datepicker_plus',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api_basic',
+    
+   
     
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -62,11 +72,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                
                 'django.template.context_processors.media',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -94,24 +106,25 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-         'OPTIONS': {
-            'min_length': 9,
-        }
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    #  {
+    #      'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    #  },
+    #  {
+    #      'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    #       'OPTIONS': {
+    #          'min_length': 9,
+    #     }
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
-
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -135,6 +148,10 @@ STATICFILES_DIRS=[
 ] 
 MEDIA_URL= '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+STAR_RATINGS_RERATE = False
+STAR_RATINGS_RANGE=5
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST= 'smtp.gmail.com' 

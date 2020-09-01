@@ -10,7 +10,13 @@
     margin-top: 50px;
     padding:30px;
 }
-
+.items{
+  margin-top: 80px;
+}
+#rating{
+  color:red;
+  margin-left:380px;
+}
 img{
     height:120px;
     width:120px;
@@ -23,7 +29,7 @@ img{
 .qualification{
     margin-top: 20px;
     padding:25px;
-    background-color:#F5F5F5;
+    background-color:white;
 
 }
 .qualification hr{
@@ -33,12 +39,13 @@ img{
 .sidenav{
     height:310px;
     width:240px;
-    background-color:#F5F5F5;;
+    background-color:white;
     float:right;
     margin-right:-20px;
     position: relative;
    
 }
+
 .price{
     font-weight: bold;
     text-align: center;
@@ -47,7 +54,7 @@ img{
 }
 .checkout button{
     margin-left:70px;
-    background-color: #ffaa80;
+    background-color: green;
     color:black;
 }
 .aboutme{
@@ -63,35 +70,36 @@ img{
     margin-right: 25px;
   }
   
-  .fa {
+.fa {
     font-size: 25px;
-  }
+}
   
-  .checked {
+.checked {
     color: orange;
-  }
+}
   
   
  
   
   /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
   
   
   /* Individual bars */
-  .rating-bar-container{width: 60%; height: 18px; background-color:gray;}
+.rating-bar-container{width: 60%; height: 18px; background-color:gray;}
  
   
   /* Responsive layout - make the columns stack on top of each other instead of next to each other */
-  @media (max-width: 400px) {
-    .side, .middle {
-      width: 100%;
-    }
-    .right {
-      display: none;
-    }
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
   }
+.right {
+    display: none;
+  }
+}
+

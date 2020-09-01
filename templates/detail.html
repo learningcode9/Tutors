@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/details.css' %}">
@@ -10,7 +11,7 @@
 <div class="detailscontainer">
     <div class="sidenav">
        <div class="price">
-           <p>$20/hr</p>
+           <p>${{tutor.price}}/hr</p>
            <hr>
        </div>
        <div class="items">
@@ -28,23 +29,19 @@
     </div>
    
     <div class="head">
-        <img class=" rounded-circle img-responsive"  src="/static/images/baby_1.jpg"/>
+        <img class=" rounded-circle img-responsive" src={{tutor.images.url}}/>
     <div class="taglines">
-        <h4>Liya Anne</h4>
-        <h3>Soprano Vocalist with a Bachelor in Professional Music</h3>
+        <h4>{{tutor.name}}</h4>
+        <h3>{{tutor.Tagline}}</h3>
     </div>
     
     <div class="qualification">
         <h4>Qualifications for “Voice (Music)”</h4>
             
-            <p>I graduated summa cum laude with a Bachelor in Professional Music from Berklee College Of Music. 
-                I have studied classical theory and counterpoint I’m both Berklee College Of Music and University of Massachusetts Boston.
-                At UMass I received a classical background in voice and music theory and at Berklee a contemporary and classical background in multiple fields, 
-                such as performance, music theory, counterpoint, songwriting, music business, and more. I have always excelled in my music theory, counterpoint, 
-                sight singing and reading classes and would love to help you get better as well!
+            <p>{{tutor.qualification}}
             </p>
         <hr>
-            <p>Related Subjects&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liya has also tutored Voice (Music), Songwriting and 3 more subjects.</p>
+            <p>Related Subjects&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{tutor.related_subjects}}</p>
         
     </div>
 </div>
@@ -58,37 +55,7 @@
             <p>Bio</p>
         </div>
         <div class="col-9">
-            <p id="aboutme">I’m Liya! I graduated summa cum laude with a Bachelor’s degree in Professional Music from 
-                Berklee College Of Music. At Berklee I studied a mixture of Performance, 
-                Songwriting and Music Business and took many other classes, 
-                such as: Ear Training & Sight Singing, Counterpoint, Conducting, Music History, 
-                Arrangement, etc. I also took part in songwriting and multiple music business clubs 
-                and had the honor to represent the college at various industry trips in Nashville 
-                and New York City. I am...</p>
-                <a href="#more" id="show">More..</a>
-                <p id="more">I have studied music theory, sight singing/reading and voice at both 
-                    Berklee College Of Music and University of Massachusetts Boston. At UMass I 
-                    received a classical training, whereas at Berklee I received a contemporary 
-                    music education in those fields. Throughout my college years I have always excelled 
-                    in my music theory courses and have been asked to help my peers by tutoring them in 
-                    subjects such as music theory, solfege, counterpoint and have also offered voice 
-                    lessons and beginning keyboard skills. I used to hold weekly meetings with my peers 
-                    where I would help them with anything they didn't understand that was taught the
-                     previous week. Music is a different language so a good tutor is very important!
-                    The way I approach tutoring is seeing where the students' level is and breaking 
-                    down the information, so they can understand it and going through that information 
-                    as much as they need. I have a lot of theory, solfege, voice lesson and beginning piano 
-                    books that are very helpful as well. Throughout my own studies I have found multiple ways 
-                    to make music theory concepts more memorable and I love sharing those with students. 
-                    I have tutored mainly peers and adults but also love teaching children. I believe that 
-                    learning music is a wonderful thing, so I want to help you learn the theory behind your 
-                    favorite song, and help you find your voice while encouraging a fun learning environment.
-
-                    I am easy to reach, so do not hesita<a href="#more" id="hide">Read less</a></p>
-
-                
-                
-                
+            <p id="aboutme">{{tutor.description_tutor}}</p>
         </div>
     </div>
 
@@ -99,8 +66,9 @@
         <p>Education</p>
     </div>
     <div class="col-9">
-        <p>Berklee College of Music</p>
-        <p>Professional Music</p>
+        <p>{{tutor.education_1}}</p>
+        <p>{{tutor.education_2}}</p>
+        <p>{{tutor.education_}}</p>
     </div>
 </div>
 <hr>
@@ -118,30 +86,27 @@
 <hr>
 <div class="row">
     <div class="col-3 policies">
-        Schedule
+        Available timings
     </div>
     <div class="col-2">
-        
-        <p>MON</p>
-        <p>TUE</p>
-        <p>WED</p>
-        <p>THU</p>
-        <p>FRI</p>
-        <p>SAT</p>
-        <p>SUN</p>
-
+        <p>MONDAY</p> 
+        <p>TUESDAY</p>
+        <p>WEDNESDAY</p>
+        <p>THURSDAY</p> 
+        <p>FRIDAY</p>
+        <p>SATURDAY</p>
+        <p>SUNDAY</p>
     </div>
     <div class="col-4">
-        <p>5:00 am - 8:00 pm</p>
-        <p>5:00 am - 8:00 pm</p>
-        <p>5:00 am - 8:00 pm</p>
-        <p>5:00 am - 8:00 pm</p>
-        <p>5:00 am - 8:00 pm</p>
-        <p>5:00 am - 8:00 pm</p>
-        <p>5:00 am - 8:00 pm</p>
        
+        <p>{{tutor.enter_mondaytimings}}</p>
+        <p>{{tutor.enter_tuesdaytimings}}</p>
+        <p>{{tutor.enter_wednesdaytimings}}</p>
+        <p>{{tutor.enter_thursdaytimings}}</p>
+        <p>{{tutor.enter_fridaytimings}}</p>
+        <p>{{tutor.enter_saturdaytimings}}</p>
+        <p>{{tutor.enter_sundaytimings}}</p>
     </div>
-
 </div>
 <hr>
 <div class="row">
@@ -150,17 +115,17 @@
     </div>
     <div class="col-3">
         <p><strong>Home School</strong></p>
-        <p>Piano</p>
+        <p>{{tutor.Home_school}}</p>
         <p><strong>Language</strong></p>
-        <p>English</p>
+        <p>{{tutor.Language}}</p>
     </div>
     <div class="col-4">
         <p><strong>Most Popular</strong></p>
-        <p>Piano</p>
+        <p>{{tutor.Most_popular}}</p>
         <p><strong>Music</strong></p>
-        <p>Ear Training, Piano, Sight Singing, Songwriting, Voice (Music),</p>
+        <p>{{tutor.Music}}</p>
         <p><strong>Summer</strong></p>
-        <p>Piano</p>
+        <p>{{tutor.summar}}</p>
 
     </div>
 
@@ -171,60 +136,52 @@
     <div class="col-3 ratings">
         <p>Rating</p>
     </div>
-    <div class="col-9">
-        <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-        <div class="ratingsbar">
-            <div class="flex">
-                <b class="text-nowrap">5 star</b>
-                <div class="rating-bar-container">
-                    <span class="rating-bar" style="width:100.0%"></span>
-                </div>
-            </div>
-            <div class="flex">
-                <b class="text-nowrap">4 star</b>
-                <div class="rating-bar-container">
-                    <span class="rating-bar" style="width:100.0%"></span>
-                </div>
-            </div>
-            <div class="flex">
-                <b class="text-nowrap">3 star</b>
-                <div class="rating-bar-container">
-                    <span class="rating-bar" style="width:100.0%"></span>
-                </div>
-            </div>
-            <div class="flex">
-                <b class="text-nowrap">2 star</b>
-                <div class="rating-bar-container">
-                    <span class="rating-bar" style="width:100.0%"></span>
-                </div>
-            </div>
-            <div class="flex">
-                <b class="text-nowrap">1 star</b>
-                <div class="rating-bar-container">
-                    <span class="rating-bar" style="width:100.0%"></span>
-                </div>
-            </div>
-        </div>
-        
-    </div>
 
+   
+    <div class="col-9">
+        <form method="POST">
+        <span class="fa fa-star " id="1-star" name='action' value= '1' onclick=starFunction(this.id)></span>
+        <span class="fa fa-star " id="2-star"  name='action' value='2' onclick=starFunction(this.id)></span>
+        <span class="fa fa-star " id="3-star"  name='action' value='3' onclick=starFunction(this.id)></span>
+        <span class="fa fa-star" id="4-star"  name='action' value='4' onclick=starFunction(this.id)></span>
+        <span class="fa fa-star" id="5-star"  name='action' value='5' onclick=starFunction(this.id)></span>
+        </form> 
+      
+        <p>5 out of {{tutor.ratings.userratings}}</p>
+       
+    </div>
+    <p id="rating"></p>
+    
+ 
 </div>
 <hr>
 <div class="row">
     <div class="col-3">
-        <p>Reviews</p>
+        <p>Comments...</p>
     </div>
-    <div class="col-3">
-        <form action="" id="usrform" >
-            <input style="margin-bottom:20px;" type="text" name="usrname" placeholder="enter username" required /> 
-        <br>
-          <textarea rows="4" cols="50" name="comment" form="usrform" required>plz add your comments here... </textarea>   
-          <input type="submit">
-        </form>
+    <div class="col-6">
+        {% if not tutor.comments.all %}
+            No Comments Yet...<a href="{% url 'onlinetutors:add_comments' pk=tutor.pk %}">
+            Add One</a>
+        {% else %}
+
+        <a href="{% url 'onlinetutors:add_comments' pk=tutor.pk %}"><h4>Add Comment</h4></a>
+        <br/><br/>
+           {% for comment in tutor.comments.all %}
+               <strong>
+                   {{comment.name}}-
+                   {{comment.created}},
+
+               </strong>
+                <br/>
+                {{comment.body}}
+                <br/><br/>
+                
+            {% endfor %}
+          {% endif %}
+            
+         
+        
     </div>
 
 </div>
@@ -248,6 +205,89 @@
     
   });
 
+
+function starFunction(star_clicked){
+    
+    {% if request.user.is_authenticated %}
+    
+    if (star_clicked == '1-star'){
+        var hasChecked = document.getElementById('1-star').classList.contains('checked');
+        if (hasChecked == true) {
+            
+            document.getElementById('2-star').classList.remove("checked");
+            document.getElementById('3-star').classList.remove("checked");
+            document.getElementById('4-star').classList.remove("checked");
+            document.getElementById('5-star').classList.remove("checked");
+        }
+        else {
+        document.getElementById('1-star').classList.add("checked");
+        }
+    }
+    
+    else if(star_clicked == '2-star'){
+        var hasChecked = document.getElementById('2-star').classList.contains('checked');
+        if (hasChecked == true) {
+           
+            document.getElementById('3-star').classList.remove("checked");
+            document.getElementById('4-star').classList.remove("checked");
+            document.getElementById('5-star').classList.remove("checked");
+        }
+        else{
+        document.getElementById('1-star').classList.add("checked");
+        document.getElementById('2-star').classList.add("checked");
+        }
+    }
+    else if(star_clicked == '3-star'){
+        var hasChecked = document.getElementById('3-star').classList.contains('checked');
+        if (hasChecked == true) {
+            document.getElementById('4-star').classList.remove("checked");
+            document.getElementById('5-star').classList.remove("checked");
+           
+          
+        }
+        else{
+        document.getElementById('1-star').classList.add("checked");
+        document.getElementById('2-star').classList.add("checked");
+        document.getElementById('3-star').classList.add("checked");
+            
+        }
+    }
+    else if(star_clicked == '4-star'){
+        var hasChecked = document.getElementById('4-star').classList.contains('checked');
+        if (hasChecked == true) {
+            document.getElementById('5-star').classList.remove("checked");
+           
+           
+        }
+        else{
+        document.getElementById('1-star').classList.add("checked");
+        document.getElementById('2-star').classList.add("checked");
+        document.getElementById('3-star').classList.add("checked");
+        document.getElementById('4-star').classList.add("checked");
+
+        }
+    }
+    else if(star_clicked == '5-star'){
+        var hasChecked = document.getElementById('5-star').classList.contains('checked');
+        if (hasChecked == true) {
+           
+        }
+        else{
+            document.getElementById('1-star').classList.add("checked");
+            document.getElementById('2-star').classList.add("checked");
+            document.getElementById('3-star').classList.add("checked");
+            document.getElementById('4-star').classList.add("checked");
+            document.getElementById('5-star').classList.add("checked");
+    
+            }
+    }
+    {% else %}
+    
+    document.getElementById('rating').innerHTML="Please login to give ratings"
+  
+    {% endif %}
+
+}
 </script>
 
 {% endblock %}

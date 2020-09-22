@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'rest_framework',
     'rest_framework.authtoken',
-    'api_basic',
+    'api_display',
     
    
     

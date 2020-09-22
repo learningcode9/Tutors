@@ -24,9 +24,10 @@ urlpatterns = [
     path("",include('onlinetutors.urls')),
       
     path('account/',include('account.urls')),
-    path('api_basic/',include('api_basic.urls')),
+    path('api_display/',include('api_display.urls')),
    
     path('admin/', admin.site.urls),
+    
         
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="password_reset.html"),name="reset_password"),
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(template_name="password_reset_sent.html"),name="password_reset_done"),

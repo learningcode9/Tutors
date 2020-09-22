@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse
 from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 # Create your models here.
@@ -169,8 +170,12 @@ class Comment(models.Model):
 
 
 class ratings(models.Model):
-    username=models.ForeignKey(User,on_delete=models.CASCADE)
+   
+
+    username= models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
+    # username = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     rating=models.FloatField()
-    tutorname=models.ForeignKey(tutors,related_name='ratings',on_delete=models.CASCADE)
+    tutorname=models.ForeignKey(tutors,related_name='tutorname',on_delete=models.CASCADE)
     created_date=models.DateTimeField(auto_created=True)
-    updated=models.DateTimeField(auto_created=True)
+   
+

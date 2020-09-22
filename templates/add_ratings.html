@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title%} Rating for tutor {% endblock %}
+
+{% block content %}
+
+{% for Rating in ratings%}
+<strong>
+     {{Rating.username}}
+     5 out of  {{Rating.rating}}
+     {{Rating.tutorname}}
+     {{Rating.created_data}}
+
+     
+</strong>
+{% endfor %}
+
+
+{% endblock %}

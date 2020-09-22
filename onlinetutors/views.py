@@ -59,6 +59,7 @@ def AddCommentView(request, pk):
     
     post = get_object_or_404(tutors, pk=pk)
     comments = post.comments.filter(active=True)
+    print(comments)
  
     # Comment posted
     if request.method == 'POST':
@@ -71,6 +72,7 @@ def AddCommentView(request, pk):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+           
             return redirect('/')
             
     else:
@@ -78,14 +80,23 @@ def AddCommentView(request, pk):
 
     return render(request,'add_comments.html', {'form': form})
 
-def ratings(request,pk):
+# def ratings(request,pk):
     
-    rating_tutor=get_object_or_404(tutors,pk=pk)
-    userratings=rating_tutor.ratings.all().aggregate(Avg('rating'))
+#     
+#     userratings=rating_tutor.ratings.all().aggregate(Avg('rating'))
+#     # userratings=ratings.objects.order_by('tutorname_id').annotate(avg_rating=Avg('rating'))
+   
+#     context = {
+#         'userratings': userratings,
+        
+#     }
  
-    return render(request, 'detail.html')
+#     return render(request, 'add_ratings.html', context)
 
-
+def rating(request,pk):
+    rating_tutor=get_object_or_404(tutors,pk=pk)
+    userratings= rating_tutor.objects.annotate(avg_rating=Avg('rating'))
+    return render(request,'add_ratings.html',{'userratings':userratings})
 
 def datePicker(request):
     return render(request,'data_picker.html')

@@ -16,7 +16,7 @@ urlpatterns = [
     path("checkout/",views.checkout,name="checkout"),
    
     path('add_comments/<int:pk>/',views.AddCommentView,name="add_comments"),
-    path('ratings/<int:pk>/',views.ratings,name="ratings"),
+    path('ratings/',views.ratings,name="ratings"),
     path('datePicker',views.datePicker,name="datePicker"),
     # path(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<post>[-\w]+)/$', views.AddCommentView,name="add_comments"), 
    

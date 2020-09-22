@@ -8,6 +8,8 @@
     {% if category %}{{ category.name }} {% else %} tutors {% endif %}
 {% endblock %}
 {% block content %}
+<!-- store userName tutorName in hidden variables -->
+<!--input hidden="hidden" id=userName" value="$User.name"/-->
 <div class="detailscontainer">
     <div class="sidenav">
        <div class="price">
@@ -139,15 +141,18 @@
 
    
     <div class="col-9">
-        <form method="POST">
+        <form method="POST" id="ajax_call">
         <span class="fa fa-star " id="1-star" name='action' value= '1' onclick=starFunction(this.id)></span>
         <span class="fa fa-star " id="2-star"  name='action' value='2' onclick=starFunction(this.id)></span>
         <span class="fa fa-star " id="3-star"  name='action' value='3' onclick=starFunction(this.id)></span>
         <span class="fa fa-star" id="4-star"  name='action' value='4' onclick=starFunction(this.id)></span>
         <span class="fa fa-star" id="5-star"  name='action' value='5' onclick=starFunction(this.id)></span>
         </form> 
-      
-        <p>5 out of {{tutor.ratings.userratings}}</p>
+
+       
+        
+        <a href="{% url 'onlinetutors:ratings'%}"><h4>Add Rating</h4></a>
+        
        
     </div>
     <p id="rating"></p>
@@ -189,6 +194,102 @@
 </div>  
 </div>
 
+
+
+<script>
+  
+    function starFunction(star_clicked){
+        var a ="{{user.pk}}";
+        var b ="{{tutor.pk}}";
+        var c= new Date();
+      
+        {% if request.user.is_authenticated %}
+    
+        if (star_clicked == '1-star'){
+            var hasChecked = document.getElementById('1-star').classList.contains('checked');
+            if (hasChecked == true) {
+                
+                document.getElementById('2-star').classList.remove("checked");
+                document.getElementById('3-star').classList.remove("checked");
+                document.getElementById('4-star').classList.remove("checked");
+                document.getElementById('5-star').classList.remove("checked");
+            }
+            else {
+              document.getElementById('1-star').classList.add("checked");
+              //postToServer(1.0, document.getElementById("userName").nodeValue, document.getElementById("tutorName").nodeValue); -->
+              postToServer(1.0,a,b,c)
+            }
+        }
+        
+        else if(star_clicked == '2-star'){
+            var hasChecked = document.getElementById('2-star').classList.contains('checked');
+            if (hasChecked == true) {
+               
+                document.getElementById('3-star').classList.remove("checked");
+                document.getElementById('4-star').classList.remove("checked");
+                document.getElementById('5-star').classList.remove("checked");
+            }
+            else{
+            document.getElementById('1-star').classList.add("checked");
+            document.getElementById('2-star').classList.add("checked");
+            postToServer(2.0,a,b,c)
+            }
+        }
+        else if(star_clicked == '3-star'){
+            var hasChecked = document.getElementById('3-star').classList.contains('checked');
+            if (hasChecked == true) {
+                document.getElementById('4-star').classList.remove("checked");
+                document.getElementById('5-star').classList.remove("checked");
+               
+              
+            }
+            else{
+            document.getElementById('1-star').classList.add("checked");
+            document.getElementById('2-star').classList.add("checked");
+            document.getElementById('3-star').classList.add("checked");
+            postToServer(3.0,a,b,c)
+                
+            }
+        }
+        else if(star_clicked == '4-star'){
+            var hasChecked = document.getElementById('4-star').classList.contains('checked');
+            if (hasChecked == true) {
+                document.getElementById('5-star').classList.remove("checked");
+               
+               
+            }
+            else{
+            document.getElementById('1-star').classList.add("checked");
+            document.getElementById('2-star').classList.add("checked");
+            document.getElementById('3-star').classList.add("checked");
+            document.getElementById('4-star').classList.add("checked");
+            postToServer(4.0,a,b,c)
+    
+            }
+        }
+        else if(star_clicked == '5-star'){
+            var hasChecked = document.getElementById('5-star').classList.contains('checked');
+            if (hasChecked == true) {
+               
+            }
+            else{
+                document.getElementById('1-star').classList.add("checked");
+                document.getElementById('2-star').classList.add("checked");
+                document.getElementById('3-star').classList.add("checked");
+                document.getElementById('4-star').classList.add("checked");
+                document.getElementById('5-star').classList.add("checked");
+                postToServer(5.0,a,b,c)
+        
+                }
+        }
+        {% else %}
+        
+        document.getElementById('rating').innerHTML="Please login to give ratings";
+      
+        {% endif %}
+   
+    }      
+    </script>
 <script>
   $(document).ready(function(){
  
@@ -205,89 +306,40 @@
     
   });
 
-
-function starFunction(star_clicked){
-    
-    {% if request.user.is_authenticated %}
-    
-    if (star_clicked == '1-star'){
-        var hasChecked = document.getElementById('1-star').classList.contains('checked');
-        if (hasChecked == true) {
+  function postToServer(ratingParam, usernameParam, tutornameParam,createddate) {  
+    var data = {
+        "rating": ratingParam,
+        "username": usernameParam,
+        "tutorname": tutornameParam,
+        "created_date" : createddate
+        //"created_date": "2020-09-15T00:00:00Z" //use date function to get current date time.
+    };
+    // put ajax code from below
+    //$(document).ready(function() {
+       // $(".fa").on("click",function(event){
+            //event.preventDefault();
+            var token = '{{csrf_token}}';
             
-            document.getElementById('2-star').classList.remove("checked");
-            document.getElementById('3-star').classList.remove("checked");
-            document.getElementById('4-star').classList.remove("checked");
-            document.getElementById('5-star').classList.remove("checked");
-        }
-        else {
-        document.getElementById('1-star').classList.add("checked");
-        }
-    }
-    
-    else if(star_clicked == '2-star'){
-        var hasChecked = document.getElementById('2-star').classList.contains('checked');
-        if (hasChecked == true) {
-           
-            document.getElementById('3-star').classList.remove("checked");
-            document.getElementById('4-star').classList.remove("checked");
-            document.getElementById('5-star').classList.remove("checked");
-        }
-        else{
-        document.getElementById('1-star').classList.add("checked");
-        document.getElementById('2-star').classList.add("checked");
-        }
-    }
-    else if(star_clicked == '3-star'){
-        var hasChecked = document.getElementById('3-star').classList.contains('checked');
-        if (hasChecked == true) {
-            document.getElementById('4-star').classList.remove("checked");
-            document.getElementById('5-star').classList.remove("checked");
-           
-          
-        }
-        else{
-        document.getElementById('1-star').classList.add("checked");
-        document.getElementById('2-star').classList.add("checked");
-        document.getElementById('3-star').classList.add("checked");
-            
-        }
-    }
-    else if(star_clicked == '4-star'){
-        var hasChecked = document.getElementById('4-star').classList.contains('checked');
-        if (hasChecked == true) {
-            document.getElementById('5-star').classList.remove("checked");
-           
-           
-        }
-        else{
-        document.getElementById('1-star').classList.add("checked");
-        document.getElementById('2-star').classList.add("checked");
-        document.getElementById('3-star').classList.add("checked");
-        document.getElementById('4-star').classList.add("checked");
+              $.ajax({ 
+                 headers: { "X-CSRFToken": token },
+                 type: "POST",
+                 url: 'http://127.0.0.1:8000/api_display/ratings/',
+                 data: JSON.stringify(data), 
+                 contentType: "application/json",
+                 success: function (data) {
+                   if (data.is_taken) {
+                     alert("rating added");
+                   }
+                 }
+               }); 
+         //});
+    //});
+         
 
-        }
-    }
-    else if(star_clicked == '5-star'){
-        var hasChecked = document.getElementById('5-star').classList.contains('checked');
-        if (hasChecked == true) {
-           
-        }
-        else{
-            document.getElementById('1-star').classList.add("checked");
-            document.getElementById('2-star').classList.add("checked");
-            document.getElementById('3-star').classList.add("checked");
-            document.getElementById('4-star').classList.add("checked");
-            document.getElementById('5-star').classList.add("checked");
-    
-            }
-    }
-    {% else %}
-    
-    document.getElementById('rating').innerHTML="Please login to give ratings"
-  
-    {% endif %}
+  }
 
-}
+
+    
 </script>
 
 {% endblock %}
